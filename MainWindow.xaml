@@ -1,0 +1,131 @@
+﻿<Window x:Class="ENIGMA_PRELIMPROJ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ENIGMA_PRELIMPROJ"
+        mc:Ignorable="d"
+        Title="Enigma Machine" Height="745" Width="1275" KeyDown="Window_KeyDown">
+
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\Arnel Suniga\OneDrive\Pictures\Screenshots\Screenshot 2025-03-26 074638.png"/>
+    </Window.Background>
+
+    <Grid RenderTransformOrigin="0.705,0.424">
+
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="90"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="20.5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
+        <!--textbox rectangles for string output-->
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Height="42" Width="262" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="756,399,0,0"/>
+
+        <!--textbox rectangles for string output-->
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Margin="6,488,3,187" RenderTransformOrigin="0.5,0.5" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.292"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-1.477"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Margin="6,578,2,97" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.292"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-1.477"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Margin="6,665,3,10" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.292"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-1.477"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+
+        <!--plugboard and rotor boxes-->
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Height="132" Width="584" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="598,241,0,0"/>
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Height="131" Width="580" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="598,105,0,0"/>
+
+        <!--set plugboard and rotor on buttons-->
+        <Rectangle Stroke="Black" Fill="#4E7A8E" RadiusX="15" RadiusY="15" Height="30" Width="471" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="57" Canvas.Top="177" Margin="657,325,0,0"/>
+        <Rectangle Stroke="Black" Margin="652,191,0,0" Fill="#4E7A8E" RadiusX="15" RadiusY="15" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="476"/>
+
+        <!--rings 1-4-->
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Height="402" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="381,40,0,0"/>
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Height="404" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="270,39,0,0"/>
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Height="402" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="161,40,0,0"/>
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Height="404" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,39,0,0"/>
+
+
+        <Label Content="Control" HorizontalAlignment="Left" Margin="45,5,0,0" VerticalAlignment="Top" Height="38" Width="81" FontFamily="Century Schoolbook" FontSize="20"/>
+        <Label Content="Ring 1 (S)" HorizontalAlignment="Left" Margin="132,5,0,0" VerticalAlignment="Top" Height="35" Width="100" FontFamily="Century Schoolbook" FontSize="20"/>
+        <Label Content="Ring 2 (M)" HorizontalAlignment="Left" VerticalAlignment="Top" Height="37" Width="110" FontFamily="Century Schoolbook" FontSize="20" Margin="242,6,0,0"/>
+        <Label Content="Ring 3 (H)" HorizontalAlignment="Left" Margin="350,6,0,0" VerticalAlignment="Top" Height="37" Width="104" FontFamily="Century Schoolbook" FontSize="20"/>
+        <Label x:Name="lblControlRing" Content="" Margin="70,37,1162,0" FontFamily="High Tower Text" FontSize="13" Height="405" VerticalAlignment="Top" />
+        <Label x:Name="lblRing1" Content="" Margin="172,40,1063,0" FontSize="13" FontFamily="High Tower Text" Height="402" VerticalAlignment="Top"/>
+        <Label x:Name="lblRing2" Content=""  FontSize="13" FontFamily="High Tower Text" Height="402" VerticalAlignment="Top" Margin="283,40,945,0"/>
+        <Label x:Name="lblRing3" Content=""  Margin="392,40,841,0" FontSize="13" FontFamily="High Tower Text" Height="402" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblInput" Margin="9,496,10,194" FontFamily="High Tower Text" FontSize="14" TextWrapping="WrapWithOverflow" Background="#F7F4E9"/>
+        <TextBlock x:Name="lblEncrpyt" Margin="9,587,10,104" FontFamily="High Tower Text" FontSize="14" TextWrapping="WrapWithOverflow"  Background="#F7F4E9"/>
+        <TextBlock x:Name="lblEncrpytMirror" Margin="10,671,10,20" FontFamily="High Tower Text" FontSize="14" TextWrapping="WrapWithOverflow"  Background="#F7F4E9"/>
+        <Button x:Name="btnRotor"  Content="Activate Rotor" Background="#4E7A8E"  Foreground="#F7F4E9" Click="btnRotor_Click" Height="18" Width="462" Canvas.Left="58" Canvas.Top="181" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="660,332,0,0" FontFamily="Palatino Linotype"/>
+        <TextBox x:Name="txtBRing1Init" HorizontalAlignment="Left" Margin="712,271,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="84" Height="20" GotFocus="txtBRing1Init_GotFocus" HorizontalContentAlignment="Center" FontFamily="High Tower Text" FontSize="15"/>
+        <TextBox x:Name="txtBRing2Init" HorizontalAlignment="Left" Margin="886,271,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="86" Height="20" GotFocus="txtBRing2Init_GotFocus" HorizontalContentAlignment="Center" FontFamily="High Tower Text" FontSize="15"/>
+        <TextBox x:Name="txtBRing3Init" HorizontalAlignment="Left" Margin="1048,271,0,0" TextWrapping="Wrap" Text="0 - 25" VerticalAlignment="Top" Width="84" Height="20" GotFocus="txtBRing3Init_GotFocus" HorizontalContentAlignment="Center" FontFamily="High Tower Text" FontSize="15"/>
+        <Label Content="R3" HorizontalAlignment="Left" Margin="657,261,0,0" VerticalAlignment="Top" FontFamily="Century Schoolbook" FontSize="25" Width="50"/>
+        <Label Content="R2" HorizontalAlignment="Left" Margin="832,261,0,0" VerticalAlignment="Top" FontFamily="Century Schoolbook" FontSize="25" Width="48"/>
+        <Label Content="R1" HorizontalAlignment="Left" Margin="994,261,0,0" VerticalAlignment="Top" FontFamily="Century Schoolbook" FontSize="25" Width="48"/>
+        <Label Content="Input Message:" HorizontalAlignment="Left" Margin="0,452,0,0" VerticalAlignment="Top" FontFamily="Century Schoolbook" FontSize="25"/>
+        <Label Content="Encrypted Message:" HorizontalAlignment="Left" Margin="0,538,0,0" VerticalAlignment="Top" FontFamily="Century Schoolbook" FontSize="25"/>
+        <Label Content="Encrypted Message with Mirroring:" HorizontalAlignment="Left" Margin="0,627,0,0" VerticalAlignment="Top" FontFamily="Century Schoolbook" FontSize="25"/>
+        <Label Content="Plugboard:" HorizontalAlignment="Left" Margin="614,130,0,0" VerticalAlignment="Top" FontFamily="Century Schoolbook" FontSize="25"/>
+        <TextBox x:Name="txtPlugboard" HorizontalAlignment="Left" Margin="755,143,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="400" TextChanged="txtPlugboard_TextChanged" FontFamily="High Tower Text" FontSize="17" Height="22"/>
+        <Button x:Name="btnSetPlugboard" Content="Set Plugboard" Background="#4E7A8E" HorizontalAlignment="Left" Margin="658,196,0,0" Click="btnSetPlugboard_Click" VerticalAlignment="Top" Height="20" Width="466" FontFamily="Palatino Linotype" Foreground="#F7F4E9"/>
+        <Label Content="Enigma Machine Simulator" HorizontalAlignment="Left" Margin="573,30,0,0" VerticalAlignment="Top" FontFamily="Century Schoolbook" FontSize="50" Height="80" Width="650" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.095"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.498"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+
+        <!--set plugboard and rotor on buttons-->
+        <Rectangle Stroke="Black" Fill="#4E7A8E" RadiusX="15" RadiusY="15" Height="30" Width="253" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="761,405,0,0"/>
+        <Button x:Name="RestartMachine"  Content="Restart Machine" Background="#4E7A8E"  Foreground="#F7F4E9" Click="Restart_Click" Height="18" Width="248" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="765,411,0,0" FontFamily="Palatino Linotype"/>
+        <Rectangle Stroke="Black" Fill="#F7F4E9" RadiusX="15" RadiusY="15" Height="402" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="486,40,0,0"/>
+        <Label x:Name="lblReflectorLBL" Content="Reflector" HorizontalAlignment="Left" Margin="459,6,0,0" VerticalAlignment="Top" Height="37" Width="94" FontFamily="Century Schoolbook" FontSize="20"/>
+        <Label x:Name="lblReflector" Content=""  Margin="497,40,736,0" FontSize="13" FontFamily="High Tower Text" Height="402" VerticalAlignment="Top"/>
+
+
+
+
+
+    </Grid>
+</Window>
+
